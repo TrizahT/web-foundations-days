@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6fb;
+    color: #202938;
+    line-height: 1.6;
+  }
+  
+
+  header {
+    background-color: #243b64;
+    color: #ffffff;
+    text-align: center;
+    padding: 32px 20px;
+  }
+  
+ 
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  
+  nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav a:hover {
+    background-color: #6c63ff;
+    border-radius: 6px;
+  }
+  
+
+  main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+  
+
+  section {
+    background-color: #ffffff;
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  
+ 
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .features li {
+    background-color: #eef1f8;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #eef1f8;
+  }
+  
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font: inherit;
+  }
+  
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  
+  button {
+    background-color: #6c63ff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #5148d9;
+  }
+  
+ 
+  @media (max-width: 600px) {
+    header {
+      padding: 24px 15px;
+    }
+  
+    header h1 {
+      font-size: 28px;
+    }
+  
+    header p {
+      font-size: 14px;
+    }
+  
+    main {
+      margin: 20px auto;
+      padding: 0 12px;
+    }
+  
+    section {
+      padding: 18px;
+    }
+  }
+  
