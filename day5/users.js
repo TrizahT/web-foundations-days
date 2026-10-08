@@ -53,6 +53,7 @@ function renderUsers(list) {
       users = await response.json();
   
       renderUsers(users);
+      filterInput.disabled = false;
   
       status.textContent = `Loaded ${users.length} users successfully.`;
     } catch (error) {
