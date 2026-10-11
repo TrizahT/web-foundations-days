@@ -61,17 +61,27 @@ FROM students AS s
 LEFT JOIN enrolments AS e ON e.student_id = s.id
 WHERE e.student_id IS NULL;
 
+
+UPDATE enrolments
+SET grade = 'A'
+WHERE student_id = 1 AND course_id = 2;
+
 SELECT s.name, c.course_name, e.grade
 FROM enrolments AS e
 JOIN students AS s ON s.id = e.student_id
 JOIN courses AS c ON c.id = e.course_id
 WHERE e.student_id = 1 AND e.course_id = 2;
 
-UPDATE enrolments
-SET grade = 'A'
-WHERE student_id = 1 AND course_id = 2;
--- TEST: Duplicate enrolment should fail because of the UNIQUE constraint
--- Expected result: UNIQUE constraint failed: enrolments.student_id, enrolments.course_id
+
 
 INSERT INTO enrolments (student_id, course_id, grade)
 VALUES (1, 1, 'C');
+
+-- TEST: Duplicate enrolment must be rejected.
+-- To run this test, uncomment the INSERT below and execute it
+-- separately after running the main SQL script.
+-- Expected error: UNIQUE constraint failed:
+-- enrolments.student_id, enrolments.course_id
+
+-- INSERT INTO enrolments (student_id, course_id, grade)
+-- VALUES (1, 1, 'C');
