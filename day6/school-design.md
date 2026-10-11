@@ -19,3 +19,14 @@ I would create an index on `enrolments(course_id)` to speed up queries that find
 ## SQL vs NoSQL
 
 I would choose SQL for this school system because students, courses, and enrolments have clear relationships. SQL supports primary keys, foreign keys, unique constraints, and joins, helping maintain data accuracy and retrieve related information. NoSQL can also store this information, but a relational database is a more natural fit for this structured data.
+## Constraints and Testing
+
+The database uses a UNIQUE constraint on `(student_id, course_id)` in the enrolments table to prevent a student from enrolling in the same course more than once. I tested this by attempting a duplicate enrolment, and SQLite rejected it.
+
+The students table also enforces unique email addresses. A duplicate email insertion was rejected, confirming that the constraint works.
+
+Foreign keys connect enrolments to existing students and courses. I enabled foreign-key enforcement using `PRAGMA foreign_keys = ON;` and tested invalid student and course IDs. SQLite rejected both insertions because the referenced records did not exist.
+
+## Index
+
+I created an index named `idx_enrolments_course_id` on `enrolments(course_id)`. This can improve the performance of queries that search for students enrolled in a particular course or count enrolments per course. I verified that the index exists using `PRAGMA index_list('enrolments');`.

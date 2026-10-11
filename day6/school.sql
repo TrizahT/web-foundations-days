@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE students (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
@@ -27,6 +29,9 @@ CREATE TABLE enrolments (
     FOREIGN KEY (course_id) REFERENCES courses(id),
     UNIQUE (student_id, course_id)
 );
+CREATE INDEX idx_enrolments_course_id
+ON enrolments(course_id);
+
 INSERT INTO enrolments (student_id, course_id, grade) VALUES
 (1, 1, 'A'),
 (1, 2, 'B'),
@@ -65,3 +70,8 @@ WHERE e.student_id = 1 AND e.course_id = 2;
 UPDATE enrolments
 SET grade = 'A'
 WHERE student_id = 1 AND course_id = 2;
+-- TEST: Duplicate enrolment should fail because of the UNIQUE constraint
+-- Expected result: UNIQUE constraint failed: enrolments.student_id, enrolments.course_id
+
+INSERT INTO enrolments (student_id, course_id, grade)
+VALUES (1, 1, 'C');
